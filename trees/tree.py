@@ -34,3 +34,22 @@ def insert(root,val):
     
     # used for connecting the nodes
     return root
+
+def finMinNode(root):
+    # this is not a recursive function 
+    curr = root
+
+    # this condition is used to detect the minimum node rather than reaching a null node
+    while curr and curr.left:
+        curr = curr.left
+    return curr
+
+def findMaxNode(root):
+
+    # same reasoning as the above
+    curr = root
+
+    while curr and curr.right:
+        curr = curr.right
+
+    return curr
