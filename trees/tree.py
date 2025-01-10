@@ -1,4 +1,4 @@
-
+from collections import deque
 class TreeNode:
 
     def __init__(self,val=0,left=None,right=None):
@@ -74,3 +74,49 @@ def remove(root,val):
             minNode = finMinNode(root.right)
             root.val = minNode.val
             root.right = remove(root.right,minNode.val)
+
+def inorder_traversal(root):
+    if not root:
+        return 
+
+    inorder_traversal(root.left)
+    print(root.val)
+    inorder_traversal(root.right)
+
+def preorder_traversal(root):
+    if not root:
+        return 
+
+    print(root.val)
+    preorder_traversal(root.left)
+    preorder_traversal(root.right)
+
+def postorder_traversal(root):
+    if not root:
+        return 
+
+    postorder_traversal(root.left)
+    postorder_traversal(root.right)
+    print(root.val)
+
+def bfs(root):
+    if not root:
+        return
+    queue = deque()
+    level = 0
+
+    queue.append(root)
+
+    while len(queue) > 0:
+        print("level of bfs:" ,level)
+
+        for i in range(len(queue)):
+            curr = queue.popleft()
+            print(curr)
+            if curr.left:
+                queue.append(curr.left)
+            if curr.right:
+                queue.append(curr.right)
+        print()
+        level += 1
+
