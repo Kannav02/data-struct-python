@@ -21,3 +21,16 @@ def search(root,val):
     else:
         return True # found the element
 
+def insert(root,val):
+    # new node
+    if not root:
+        return TreeNode(val)
+    # move to the right
+    if root.val < val :
+        root.right = insert(root.right,val)
+    # move to the left
+    else:
+        root.left = insert(root.left,val)
+    
+    # used for connecting the nodes
+    return root
