@@ -53,3 +53,24 @@ def findMaxNode(root):
         curr = curr.right
 
     return curr
+
+def remove(root,val):
+    if not root:
+        return None
+    # first we traverse the nodes
+    if root.val < val :
+        root.right = remove(root.right,val)
+    elif root.val > val:
+        root.left = remove(root.left,val)
+    # the node is found
+    else:
+        # removal process
+        if not root.right:
+            return root.left
+        elif not root.left:
+            return root.right
+        else:
+            # this is for 2 children case
+            minNode = finMinNode(root.right)
+            root.val = minNode.val
+            root.right = remove(root.right,minNode.val)
